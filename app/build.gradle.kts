@@ -1,12 +1,3 @@
-buildscript {
-    repositories {
-        maven {
-            url = uri("https://jitpack.io")
-        } // 在 buildscript 块中添加
-    }
-
-}
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -17,6 +8,10 @@ plugins {
 android {
     namespace = "com.example.leagueofticket"
     compileSdk = 34
+
+    viewBinding {
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.example.leagueofticket"
@@ -70,6 +65,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.10.0")
     kapt("com.github.bumptech.glide:compiler:4.10.0")
     implementation("com.lcodecorex:tkrefreshlayout:1.0.7")
+
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("com.jakewharton:butterknife:10.2.1")
     kapt("com.jakewharton:butterknife-compiler:10.2.1")
