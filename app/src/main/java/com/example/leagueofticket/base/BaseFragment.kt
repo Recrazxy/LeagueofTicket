@@ -8,15 +8,33 @@ import androidx.fragment.app.Fragment
 import com.example.leagueofticket.R
 
 abstract class BaseFragment : Fragment() {
-    private var rootview: View? = null;
+    private var rootview: View? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         rootview = getRootView(inflater, container, savedInstanceState);
-        return rootview;
+        initPresenter()
+        loadData()
+        return rootview
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        release()
+    }
+
+    protected open fun release() {
+        // 释放资源
+    }
+
+    protected open fun initPresenter() {
+        // 创建presenter
+    }
+
+    protected open fun loadData() {
+        // 加载数据
     }
 
     private fun getRootView(
@@ -24,7 +42,7 @@ abstract class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(getPageLayoutId(), container, false)
     }
 
     abstract fun getPageLayoutId(): Int
