@@ -5,7 +5,7 @@ import com.example.leagueofticket.base.BaseFragment
 import com.example.leagueofticket.databinding.FragmentSearchBinding
 
 class SearchFragment : BaseFragment() {
-    override fun getRootBinding(): ViewBinding {
+    override fun getSuccessBinding(): ViewBinding {
         return FragmentSearchBinding.inflate(layoutInflater)
     }
 

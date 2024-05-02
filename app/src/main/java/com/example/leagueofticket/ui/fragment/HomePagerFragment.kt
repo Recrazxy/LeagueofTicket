@@ -5,7 +5,7 @@ import com.example.leagueofticket.base.BaseFragment
 import com.example.leagueofticket.databinding.FragmentHomePagerBinding
 
 class HomePagerFragment : BaseFragment(){
-    override fun getRootBinding(): ViewBinding {
+    override fun getSuccessBinding(): ViewBinding {
         return FragmentHomePagerBinding.inflate(layoutInflater)
     }
 

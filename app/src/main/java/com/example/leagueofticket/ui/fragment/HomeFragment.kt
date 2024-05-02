@@ -17,7 +17,7 @@ class HomeFragment : BaseFragment(), IHomeCallback {
     private var homepresenter_: IHomePresenter = HomePresenterImpl()
     private lateinit var homeBinding_: FragmentHomeBinding
 
-    override fun getRootBinding(): ViewBinding {
+    override fun getSuccessBinding(): ViewBinding {
         homeBinding_ = FragmentHomeBinding.inflate(layoutInflater)
         return homeBinding_
     }
@@ -26,17 +26,12 @@ class HomeFragment : BaseFragment(), IHomeCallback {
         // 设置适配器
         setupViewPage()
         setupTabLayout()
-//        Log.d("HomeFragment", "homePager_adapter: ${thehomePager_.adapter}")
-//        Log.d("HomeFragment", "homebinding: $homeBinding_")
-//        Log.d("HomeFragment", "homePager_: $homePager_")
     }
 
     private fun setupViewPage() {
         homePagerAdapter_ = HomePagerAdapter(this)
-//        homePagerAdapter_ = testAdapter(this)
-//        val iamtestAdapter = testAdapter(this)
-//        Log.d("HomeFragment", "homepageradapter: $homePagerAdapter_")
         homeBinding_.theHomePager2.adapter = homePagerAdapter_
+        homeBinding_.theHomePager2.isSaveEnabled = false
     }
 
     private fun setupTabLayout() {
@@ -53,14 +48,26 @@ class HomeFragment : BaseFragment(), IHomeCallback {
 
     override fun loadData() {
         homepresenter_.getCatergories()
-        Log.d("HomeFragment", "loaddataed")
         // 加载数据
     }
 
     override fun onCatergoriesLoaded(categories: Categories) {
         // 加载的数据从这里回来
-        Log.d("onCatergories", "onCatergoriesLoaded: $categories")
+        setUpState(State.SUCCESS)
+//        Log.d("onCatergories", "onCatergoriesLoaded: $categories")
         homePagerAdapter_.setCategories(categories)
+    }
+
+    override fun onNetworkError() {
+        setUpState(State.ERROR)
+    }
+
+    override fun onLoading() {
+        setUpState(State.LOADING)
+    }
+
+    override fun onEmpty() {
+        setUpState(State.EMPTY)
     }
 
     override fun release() {

@@ -13,6 +13,7 @@ class HomePresenterImpl : IHomePresenter {
     private var callback_: IHomeCallback? = null
 
     override fun getCatergories() {
+        callback_?.onLoading()
         val api = RetrofitManager.instance?.getApi()
 //        val api = retrofit.create(Api::class.java)
         val task = api?.getCatergories()
@@ -25,17 +26,22 @@ class HomePresenterImpl : IHomePresenter {
                     val categories = response.body()
                     Log.d("HomePresenterImpl", "data is -> ${categories.toString()}")
                     // 通知UI更新
-                    if (categories != null) {
+                    if (categories == null || categories.data.isEmpty()) {
+                        callback_?.onEmpty()
+                    } else {
                         callback_?.onCatergoriesLoaded(categories)
+
                     }
                 } else {
                     Log.i("HomePresenterImpl", "请求失败, code -> $code")
+                    callback_?.onNetworkError()
                 }
             }
 
             override fun onFailure(call: Call<Categories>, t: Throwable) {
                 // 加载失败结果
                 Log.e("HomePresenterImpl", "请求错误, error -> ${t.message}")
+                callback_?.onNetworkError()
             }
         })
     }

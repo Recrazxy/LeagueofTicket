@@ -5,7 +5,7 @@ import com.example.leagueofticket.base.BaseFragment
 import com.example.leagueofticket.databinding.FragmentSelectedBinding
 
 class SelectedFragment : BaseFragment() {
-    override fun getRootBinding(): ViewBinding {
+    override fun getSuccessBinding(): ViewBinding {
         return FragmentSelectedBinding.inflate(layoutInflater)
     }
 

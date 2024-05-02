@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initFragment()
-        Log.d(TAG, "initFragmented")
+//        Log.d(TAG, "initFragmented")
         initListener(binding)
     }
 
@@ -38,26 +38,22 @@ class MainActivity : AppCompatActivity() {
         selectedFragment_ = SelectedFragment()
         redpacketFragment_ = RedPacketFragment()
         searchFragment_ = SearchFragment()
-        testFragmet = TestHomeFragment()
         fm = supportFragmentManager
         switchFragment(homeFragment_)
-//        switchFragment(testFragmet)
     }
 
-    private fun switchFragment(targetFragment: BaseFragment/*TestHomeFragment*/) {
+    private fun switchFragment(targetFragment: BaseFragment) {
         val transaction = fm.beginTransaction()
         transaction.replace(R.id.main_page_container, targetFragment)
-        Log.d(TAG, "switchFragment: $targetFragment")
         transaction.commit()
     }
 
     private fun initListener(binder: ActivityMainBinding) {
-        binder.mainNavigationBar.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item ->
+        binder.mainNavigationBar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
                     Log.d(TAG, "主页")
                     switchFragment(homeFragment_)
-//                    switchFragment(testFragmet)
                 }
 
                 R.id.navigation_selected -> {
@@ -76,6 +72,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
-        })
+        }
     }
 }
