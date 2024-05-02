@@ -1,14 +1,12 @@
 package com.example.leagueofticket.ui.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.leagueofticket.R
+import androidx.viewbinding.ViewBinding
 import com.example.leagueofticket.base.BaseFragment
+import com.example.leagueofticket.databinding.FragmentRedpacketBinding
 
 class RedPacketFragment : BaseFragment() {
-    override fun getPageLayoutId(): Int {
-        return R.layout.fragment_redpacket
+    override fun getRootBinding(): ViewBinding {
+        return FragmentRedpacketBinding.inflate(layoutInflater)
     }
+
 }

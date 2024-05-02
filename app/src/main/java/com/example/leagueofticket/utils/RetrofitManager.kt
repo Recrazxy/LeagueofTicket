@@ -1,13 +1,14 @@
-package utils
+package com.example.leagueofticket.utils
 
 import com.example.leagueofticket.model.Api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitManager {
+class RetrofitManager private constructor() {
 
     private var retrofit_: Retrofit ?= null
-    private constructor() {
+
+    init {
         retrofit_ = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -30,7 +31,7 @@ class RetrofitManager {
         }
     }
 
-    public fun getApi(): Api {
+    fun getApi(): Api {
         return retrofit_?.create(Api::class.java)!!
     }
 }

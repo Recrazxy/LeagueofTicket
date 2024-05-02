@@ -5,23 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.example.leagueofticket.R
 
 abstract class BaseFragment : Fragment() {
-    private var rootview: View? = null
+    lateinit var rootBinding_: ViewBinding
+    private var rootview_: View? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        rootview = getRootView(inflater, container, savedInstanceState);
+        rootview_ = inflater.inflate(R.layout.fragment_home, container, false)
+        rootBinding_ = getRootBinding()
+//        Log.d("BaseFragment", "homebinding: $rootBinding_")
+        initView()
         initPresenter()
         loadData()
-        return rootview
+        return rootBinding_.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    abstract fun getRootBinding(): ViewBinding
+
+
+    protected open fun initView() {
+        // 初始化view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
         release()
     }
 
@@ -37,13 +50,4 @@ abstract class BaseFragment : Fragment() {
         // 加载数据
     }
 
-    private fun getRootView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(getPageLayoutId(), container, false)
-    }
-
-    abstract fun getPageLayoutId(): Int
 }

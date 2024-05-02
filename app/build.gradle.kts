@@ -67,6 +67,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.10.0")
     kapt("com.github.bumptech.glide:compiler:4.10.0")
     implementation("com.lcodecorex:tkrefreshlayout:1.0.7")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
 
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("com.jakewharton:butterknife:10.2.1")

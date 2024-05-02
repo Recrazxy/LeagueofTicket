@@ -2,11 +2,11 @@ package com.example.leagueofticket.ui.fragment
 
 import androidx.viewbinding.ViewBinding
 import com.example.leagueofticket.base.BaseFragment
-import com.example.leagueofticket.databinding.FragmentSearchBinding
+import com.example.leagueofticket.databinding.FragmentHomePagerBinding
 
-class SearchFragment : BaseFragment() {
+class HomePagerFragment : BaseFragment(){
     override fun getRootBinding(): ViewBinding {
-        return FragmentSearchBinding.inflate(layoutInflater)
+        return FragmentHomePagerBinding.inflate(layoutInflater)
     }
 
 }

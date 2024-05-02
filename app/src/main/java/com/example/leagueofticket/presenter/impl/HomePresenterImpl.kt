@@ -1,17 +1,18 @@
 package com.example.leagueofticket.presenter.impl
 
 import android.util.Log
-import com.example.leagueofticket.model.Api
 import com.example.leagueofticket.model.domain.Categories
 import com.example.leagueofticket.view.IHomeCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.RetrofitManager
+import com.example.leagueofticket.utils.RetrofitManager
 import java.net.HttpURLConnection
 
 class HomePresenterImpl : IHomePresenter {
-    override fun getCaterories() {
+    private var callback_: IHomeCallback? = null
+
+    override fun getCatergories() {
         val api = RetrofitManager.instance?.getApi()
 //        val api = retrofit.create(Api::class.java)
         val task = api?.getCatergories()
@@ -24,6 +25,9 @@ class HomePresenterImpl : IHomePresenter {
                     val categories = response.body()
                     Log.d("HomePresenterImpl", "data is -> ${categories.toString()}")
                     // 通知UI更新
+                    if (categories != null) {
+                        callback_?.onCatergoriesLoaded(categories)
+                    }
                 } else {
                     Log.i("HomePresenterImpl", "请求失败, code -> $code")
                 }
@@ -38,10 +42,12 @@ class HomePresenterImpl : IHomePresenter {
 
     override fun registerCallback(callback: IHomeCallback) {
 //         TODO("Not yet implemented")
+        this.callback_ = callback
     }
 
     override fun unregisterCallback(callback: IHomeCallback) {
 //         TODO("Not yet implemented")
+        this.callback_ = null
     }
 
 }
