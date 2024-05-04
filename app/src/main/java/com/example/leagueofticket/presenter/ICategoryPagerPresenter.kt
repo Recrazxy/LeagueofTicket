@@ -1,6 +1,9 @@
 package com.example.leagueofticket.presenter
 
-interface ICategoryPagerPresenter {
+import com.example.leagueofticket.base.IBasePresenter
+import com.example.leagueofticket.view.ICatergoryPagerCallback
+
+interface ICategoryPagerPresenter: IBasePresenter<ICatergoryPagerCallback> {
     /**
      * 根据分类id获取内容
      */
@@ -9,4 +12,5 @@ interface ICategoryPagerPresenter {
     fun loadMore(categoryId: Int)
 
     fun reload(categoryId: Int)
+
 }

@@ -10,7 +10,7 @@ import retrofit2.Response
 import com.example.leagueofticket.utils.RetrofitManager
 import java.net.HttpURLConnection
 
-class HomePresenterImpl : IHomePresenter {
+class HomePresenterImpl: IHomePresenter {
     private var callback_: IHomeCallback? = null
 
     override fun getCatergories() {
