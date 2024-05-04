@@ -1,13 +1,11 @@
 package com.example.leagueofticket.ui.fragment
 
-import android.util.Log
 import androidx.viewbinding.ViewBinding
-import com.example.leagueofticket.R
 import com.example.leagueofticket.base.BaseFragment
 import com.example.leagueofticket.databinding.FragmentHomeBinding
 import com.example.leagueofticket.model.domain.Categories
 import com.example.leagueofticket.presenter.impl.HomePresenterImpl
-import com.example.leagueofticket.presenter.impl.IHomePresenter
+import com.example.leagueofticket.presenter.IHomePresenter
 import com.example.leagueofticket.ui.adapter.HomePagerAdapter
 import com.example.leagueofticket.view.IHomeCallback
 import com.google.android.material.tabs.TabLayoutMediator

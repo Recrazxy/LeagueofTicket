@@ -1,4 +1,4 @@
-package com.example.leagueofticket.presenter.impl
+package com.example.leagueofticket.presenter
 
 import com.example.leagueofticket.view.IHomeCallback
 

@@ -2,6 +2,7 @@ package com.example.leagueofticket.presenter.impl
 
 import android.util.Log
 import com.example.leagueofticket.model.domain.Categories
+import com.example.leagueofticket.presenter.IHomePresenter
 import com.example.leagueofticket.view.IHomeCallback
 import retrofit2.Call
 import retrofit2.Callback

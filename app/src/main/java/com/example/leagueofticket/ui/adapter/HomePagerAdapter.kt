@@ -23,7 +23,8 @@ class HomePagerAdapter(fragment: Fragment) :
 
     override fun createFragment(position: Int): Fragment {
         //        Log.d("HomePagerAdapter", "createFragment: $homePagerFragment")
-        return HomePagerFragment()
+        val homePagerFragment = HomePagerFragment.newInstance(categoryList_[position])
+        return homePagerFragment
     }
 
     fun setCategories(categories: Categories) {
