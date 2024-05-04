@@ -9,4 +9,8 @@ class HomePagerFragment : BaseFragment(){
         return FragmentHomePagerBinding.inflate(layoutInflater)
     }
 
+    override fun initView() {
+        setUpState(State.SUCCESS)
+    }
+
 }

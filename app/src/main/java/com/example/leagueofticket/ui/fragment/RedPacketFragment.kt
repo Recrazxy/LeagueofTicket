@@ -9,4 +9,7 @@ class RedPacketFragment : BaseFragment() {
         return FragmentRedpacketBinding.inflate(layoutInflater)
     }
 
+    override fun initView() {
+        setUpState(State.SUCCESS)
+    }
 }

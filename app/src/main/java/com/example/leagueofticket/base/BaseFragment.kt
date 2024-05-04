@@ -36,10 +36,10 @@ abstract class BaseFragment : Fragment() {
         container_ = (rootBinding_ as BaseFragmentLayoutBinding).baseContainer
         Log.d("BaseFragment", "onCreateView")
         loadStatesBinding(inflater, container)
+        setUpState(State.NONE)
         initView()
         initPresenter()
         loadData()
-        setUpState(State.NONE)
 
         return rootBinding_.root
     }
@@ -66,6 +66,14 @@ abstract class BaseFragment : Fragment() {
 
     protected open fun loadErrorBinding(inflater: LayoutInflater, container: ViewGroup?) {
         errorBinding_ = FragmentErrorBinding.inflate(layoutInflater)
+        (errorBinding_ as FragmentErrorBinding).networkErrorTips.setOnClickListener {
+            Log.d("BaseFragment", "onClick: 点击了错误页面")
+            onRetryClick()
+        }
+    }
+
+    protected open fun onRetryClick() {
+
     }
 
     protected open fun loadEmptyBinding(inflater: LayoutInflater, container: ViewGroup?) {

@@ -75,4 +75,9 @@ class HomeFragment : BaseFragment(), IHomeCallback {
         homepresenter_.unregisterCallback(this)
     }
 
+    override fun onRetryClick() {
+        // 网络错误，点击重试
+        // 重新加载分类
+        homepresenter_.getCatergories()
+    }
 }

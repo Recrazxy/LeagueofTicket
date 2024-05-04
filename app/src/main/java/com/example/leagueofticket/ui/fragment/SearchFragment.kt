@@ -9,4 +9,7 @@ class SearchFragment : BaseFragment() {
         return FragmentSearchBinding.inflate(layoutInflater)
     }
 
+    override fun initView() {
+        setUpState(State.SUCCESS)
+    }
 }

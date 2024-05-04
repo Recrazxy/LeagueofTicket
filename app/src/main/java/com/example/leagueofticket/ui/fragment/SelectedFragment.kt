@@ -8,5 +8,7 @@ class SelectedFragment : BaseFragment() {
     override fun getSuccessBinding(): ViewBinding {
         return FragmentSelectedBinding.inflate(layoutInflater)
     }
-
+    override fun initView() {
+        setUpState(State.SUCCESS)
+    }
 }
